@@ -13,11 +13,24 @@ def Get():
     return render_template('admin/index.html')
     
     
-@bp.route('/pharmacies', methods = ['GET'])
+@bp.route('/pharmacy/list', methods = ['GET'])
 def GetPharhmacies():
     if not 'username' in session:
         return redirect('/login/')
-
     networkid = session.get('networkid')
     pharm = Pharmacy.select().where(Pharmacy.network == networkid)
     return render_template('admin/pharmacylist.html', data=pharm, length=len(pharm))
+
+@bp.route('/pharmacy/add', methods = ['GET'])
+def AddPharmacy():
+    if not 'username' in session:
+        return redirect('/login/')
+    return render_template('admin/pharmacy_add.html')
+
+@bp.route('/pharmacy/add', methods = ['POST'])
+def product_create():
+    _name = request.form.get('name')
+    _address = request.form.get('address')
+    
+    pharmacy = Client().save()
+    return redirect('/client')

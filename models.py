@@ -14,9 +14,19 @@ class Network(BaseModel):
 
 class Pharmacy(BaseModel):
     id = AutoField()
-    network = ForeignKeyField(Network, related_name = 'pharmacies')
+    network = ForeignKeyField(Network, related_name = 'pharmacy')
     name = CharField()
-    
+    address = CharField()
+ 
+class Department(BaseModel):
+    id = AutoField()
+    name = CharField()
+    pharmacy = ForeignKeyField(Pharmacy, related_name = 'pharmacy')
+
+class Cashier(BaseModel):
+    id = AutoField()
+    name = CharField()
+    department = ForeignKeyField(Department, related_name = 'Department')
 
 class Users(BaseModel):
     id = AutoField()
