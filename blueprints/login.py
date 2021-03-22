@@ -29,6 +29,8 @@ def Check():
     
     session['username'] = a.username
     session['role'] = a.role
+    session['networkid'] = a.network.id
+
     
     if a.role == 'admin':
         return redirect('/admin/')
