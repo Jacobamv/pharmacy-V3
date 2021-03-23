@@ -13,7 +13,7 @@ def Get():
     return render_template('admin/index.html')
     
     
-@bp.route('/pharmacy/list', methods = ['GET'])
+@bp.route('/pharmacy', methods = ['GET'])
 def GetPharhmacies():
     if not 'username' in session:
         return redirect('/login/')
@@ -31,6 +31,5 @@ def AddPharmacy():
 def product_create():
     _name = request.form.get('name')
     _address = request.form.get('address')
-    
-    pharmacy = Client().save()
-    return redirect('/client')
+    phar = Pharmacy(name = _name, network = 1, address=_address).save()
+    return redirect('/admin/pharmacy')
