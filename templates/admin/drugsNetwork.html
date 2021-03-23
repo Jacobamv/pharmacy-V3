@@ -1,0 +1,62 @@
+<!-- na-sa -->
+{% extends 'admin/base.html' %}
+
+{% block idbody %}bg-gradient-primary{% endblock %}
+
+
+{% block title %}
+Список аптек
+{% endblock %}
+
+{% block content %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Список лекарств</h1>
+
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <br>
+                        <br>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Аптека</th>
+
+                                        </tr>
+                                    </thead>
+                                    {% if length > 10 %}
+                                    <tfoot>
+                                        <tr>
+                                            <th>Аптека</th>
+                                        </tr>
+                                    </tfoot>
+                                    {% endif %}
+                                    <tbody>
+                                        {% for i in data %}
+                                        <tr>    
+                                            <td> <a href="drugs/show/{{i.id}}"> {{i.name}} </a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+            <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+            <script src="{{ url_for('static', filename='js/suggestions.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
