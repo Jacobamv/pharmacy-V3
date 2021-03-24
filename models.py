@@ -40,3 +40,5 @@ if __name__ == '__main__':
     Users.create_table()
     Network.create_table()
     Pharmacy.create_table()
+
+Department.create_table()

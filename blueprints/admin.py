@@ -2,9 +2,7 @@ from models import *
 
 from flask import Blueprint, render_template, request, redirect, session
 
-
 bp = Blueprint('admin', __name__ )
-
 
 @bp.route('/', methods=['GET'])
 def Get():
@@ -33,3 +31,22 @@ def product_create():
     _address = request.form.get('address')
     phar = Pharmacy(name = _name, network = 1, address=_address).save()
     return redirect('/admin/pharmacy')
+
+@bp.route('pharmacy/edit/<id>')
+def EditPharmacy(id):
+    phar = Pharmacy.get(Pharmacy.id == id)
+    return render_template('/admin/pharmacy_edit.html', phar=phar)
+
+@bp.route('pharmacy/edit/<id>', methods = ['POST'])
+def EditPharmacyPost(id):
+    phar = Pharmacy.get(Pharmacy.id == id)
+    phar.name = request.form['name']
+    phar.address = request.form['address']
+    phar.save()
+    return redirect('/admin/pharmacy')
+
+
+@bp.route('/pharmacy/<id>/departments')
+def GetDepartments(id):
+    dp = Department.select().where(Department.pharmacy == id)
+    return render_template('/admin/department_list.html',data = dp, length=len(dp))

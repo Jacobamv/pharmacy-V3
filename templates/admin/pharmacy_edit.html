@@ -1,0 +1,36 @@
+{% extends 'admin/base.html' %}
+
+{% block idbody %}bg-gradient-primary{% endblock %}
+
+
+{% block title %}
+ Изменение  Аптеки
+{% endblock %}
+
+        {% block content %}
+
+   <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800 text-center" >Изменить Аптеку</h1>
+
+                    <form method="POST">
+                        <div class="container" style="width:50%">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Как называется?</label>
+                            <input class="form-control" required value="{{phar.name}}" name="name" id="exampleFormControlInput1" type="text" placeholder="Введите название Аптеки">
+                        </div>
+                    
+                        <div class="form-group"><label for="exampleFormControlTextarea1">Адрес</label>
+                            <textarea class="form-control" required value="{{phar.address}}"  name="address" id="exampleFormControlTextarea1" rows="2"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Добавить</button>
+                    </div>
+                    </form>
+
+                </div>
+                <!-- /.container-fluid -->
+    </div>
+    {% endblock %}
+    

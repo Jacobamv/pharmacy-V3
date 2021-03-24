@@ -4,7 +4,7 @@
 
 
 {% block title %}
- Управление  Аптеками 
+Список отделей 
 {% endblock %}
 
         {% block content %}
@@ -13,13 +13,13 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Аптеки</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Отдели</h1>
 
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <div class="btn btn-light"><a href="/admin/pharmacy/add">Добавить аптеку</a></div>
+                            <div class="btn btn-light"><a href="/admin/pharmacy/add">Добавить Отдели</a></div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -28,10 +28,6 @@
                                         <tr>
                                             <th>id</th>
                                             <th>Название</th>
-                                            <th>Адрес</th>
-                                            <th>Отдели</th>
-                                            <th>Действие</th>
-
                                         </tr>
                                     </thead>
                                     {% if length > 10 %}
@@ -39,9 +35,6 @@
                                         <tr>
                                             <th>id</th>
                                             <th>Название</th>
-                                            <th>Адрес</th>
-                                            <th>Отдели</th>
-                                            <th>Действие</th>
                                         </tr>
                                     </tfoot>
                                     {% endif %}
@@ -50,8 +43,6 @@
                                         <tr>
                                             <td>{{i.id}}</td>
                                             <td>{{i.name}}</td>
-                                            <td><a href="/admin/pharmacy/{{i.id}}/departments">Отдели</a></td>
-                                            <td>{{i.address}}</td>
                                             <td><a href="/admin/pharmacy/edit/{{i.id}}"><i class="fas fa-pen"></i></a>
                                             </td>
                                         </tr>
